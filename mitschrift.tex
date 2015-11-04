@@ -1,0 +1,1010 @@
+% Dokumententyp (Schriftgröße, Papiergröße, Formelausrichtung)
+\documentclass[pdftex,12pt,a4paper,fleqn]{scrartcl}
+
+% Ein- und Ausgabekodierung
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Sprache
+\usepackage[ngerman]{babel}
+\usepackage[babel,german=quotes]{csquotes}
+
+% Schriftart
+\usepackage{lmodern}
+
+% Euro-Symbol
+\usepackage{eurosym}
+
+% Tabellen
+\usepackage{longtable}
+\usepackage{array}
+
+% PDF-Seiten Landscape
+\usepackage{pdflscape}
+
+% Schlussregeln
+\usepackage{proof}
+
+% Listen
+\usepackage{enumitem}
+
+% Formelsatz
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Seiten-Geometrie
+\usepackage[paper=a4paper,margin=2.5cm]{geometry}
+
+% Zitate
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+
+% Hurenkinder- und Schusterjungenregelung
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+% Variablen
+\newcommand{\doctitle}{Mathematik für Informatiker 1}
+\newcommand{\docsubtitle}{}
+\newcommand{\docauthor}{Marvin Homann}
+\newcommand{\docdate}{21. Oktober 2015 ff.}
+
+% PDF-Links
+\usepackage[ngerman,pdfauthor={\docauthor},
+pdftitle={\doctitle},
+colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black,
+filecolor=black]{hyperref}
+
+% Titelseite
+\title{\doctitle}
+\subtitle{\docsubtitle}
+\author{\docauthor}
+\date{\docdate}
+
+% Zeilenabstand
+\usepackage{setspace}
+
+% Kopf- und Fußzeilen
+\usepackage[automark]{scrpage2}
+\ihead[]{}
+\ohead[]{}
+\ifoot[]{\docauthor}
+\cfoot[]{}
+\ofoot[]{\thepage}
+\pagestyle{scrheadings}
+
+% Fußnoten
+\usepackage[hang]{footmisc}
+\setlength{\footnotemargin}{3mm}
+
+% Todonotes
+\usepackage{todonotes}
+
+% Boxen
+\usepackage[framemethod=tikz]{mdframed}
+
+% Grafiken und Fotos
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{circuitikz}
+\usetikzlibrary{decorations}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Farben
+\usepackage{color}
+
+% Floating
+\usepackage{float}
+
+% Formatierung der Paragraphen
+\parindent 0pt
+\parskip 6pt
+
+% Euro- und Gradzeichen (Unicode)
+\DeclareUnicodeCharacter{B0}{$^{\circ}$}
+\DeclareUnicodeCharacter{20AC}{\euro}
+ 
+\begin{document}
+ 
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Organisation} % (fold)
+\label{sec:organisation}
+
+% section organisation (end)
+
+\subsection{Prof} % (fold)
+\label{sub:prof}
+\begin{itemize}
+	\item Prof. Hanna Markwig
+	\begin{itemize}
+	 	\item Raum: E2.4, 301
+	 	\item Tel: 57422
+	 	\item Mail: hannah@math.uni-sb.de
+	 	\item Web: \href{https://www.math.uni-sb.de/wiki/doku.php?id=ag-seite:ag-markwig:teaching:eaz}{Mathe für Informatiker I}
+	 	\item Anmeldung für die Übungsgruppen bis Freitag 23.10.2015 10 Uhr
+	 	\item \href{https://forum.math.uni-sb.de/viewforum.php?f=53}{Forum:} Passwort: Leibniz
+	 \end{itemize} 
+	 \item Assistent Christian Jürgens
+	 \begin{itemize}
+	 	\item Raum: E2.4, 303
+	 	\item Tel: 3206
+	 	\item Mail: juergens@math.uni-sb.de
+	 \end{itemize}
+\end{itemize}
+% subsection prof (end)
+
+\subsection{Literatur} % (fold)
+\label{sub:literatur}
+\begin{itemize}
+	\item Forster, Analysis 1
+	\item Kreußler, Pfister, Mathematik für informatiker
+	\item Schreyer, Mathematik für Informatiker
+	\item Gathmann, Grundlagen Mathematik
+	\item Markwig, Grundlagen Informatik
+	\item Heuser, Analysis 1
+	\item Manfred Lehn, Wie bearbeite ich einen Übungszettel?
+\end{itemize}
+% subsection literatur (end)
+
+\subsection{Übungszettel} % (fold)
+\label{sub:_bungszettel}
+\begin{itemize}
+	\item Jeden Freitag gibt es einen Übungszettel
+	\item Eine Woche Zeit, diesen Zettel zu bearbeiten
+	\item Übungsgruppen beginnen ab 2.11.2015
+\end{itemize}
+% subsection _bungszettel (end)
+
+\subsection{Klausuren} % (fold)
+\label{sub:klausuren}
+\begin{itemize}
+	\item Hauptklausur 19.2.2016
+	\item Nachklausur 6.4.2016
+\end{itemize}
+% subsection klausuren (end)
+
+\newpage
+
+\section{Vorlesung 21.10.2015} % (fold)
+\label{sec:vorlesung_21_10_2015}
+
+\subsection{Übersicht} % (fold)
+\label{sub:_bersicht}
+\begin{itemize}
+	\item Reelle Zahlen und Funktionen von reellen Zahlen
+	\item Grenzwerte
+	\item Stetigkeit
+	\item Differenzierbarkeit
+	\item Integralrechnung
+\end{itemize}
+% subsection _bersicht (end)
+
+\subsection{Grundlagen} % (fold)
+\label{sub:grundlagen}
+\subsubsection{Aussagenlogik} % (fold)
+\label{ssub:aussagenlogik}
+Aussagen sind Sätze, für die man entscheiden kann, ob sie wahr oder falsch sind.
+Man kann ihnen einen Wahrheistwert zuweisen.
+
+\textbf{Beispiele:} 
+\begin{itemize}
+	\item Das Saarland ist ein Bundesland der BRD ist eine wahre Aussage
+	\item Das Saarland ist das größte Bundesland der BRD ist eine falsche Aussage
+	\item Knödel schmecken nicht ist keine Aussage
+	\item Mach das Licht an ist  keine Aussage
+	\item $1+1=2$ ist eine wahre Aussage
+	\item $1+1=3$ ist eine falsche Aussage
+	\item $1+1$ ist keine Aussage
+\end{itemize}
+
+\textbf{Ziel:} aus bekannten wahren Aussagen neue Aussagen als wahr nachzuweisen.
+
+\textbf{Beispiele:}
+\begin{itemize}
+	\item $A:$ Der Bundespärsident ist stets mindestens 40 Jahre alt ist wahr
+	\begin{itemize}
+		\item Das Grundgesetz zur Wahl des Bundespräsidenten: 
+
+		$B:$ Wählbar ist jeder Deutsche, der das Wahlrecht zum Bundestag besitzt und das 40te Lebensjahr beendet hat
+		\item $B \Rightarrow A$ oder Aus B folgt A
+	\end{itemize}
+\end{itemize}
+
+Aussagen, die als wahr festgelegt werden, heißen \textbf{Axiome}.
+
+\textbf{Negation:}
+$\neg A$ Der Bundespräsident ist nicht stets mindestens 40 Jahre alt
+
+\textbf{Konjunktion (und):} $\land$ 
+
+$C:$ Wählbar ist jeder Deutsche, der das Wahlrecht zum Bundestag besitzt
+
+$D:$ Wählbar ist jeder Deutsche, der das 40. Lebensjahr vollendet hat.
+
+$C \land D$ stimmt mit B überein
+
+$C \land D$ ist nur dann wahr, wenn C und D beide wahr sind.
+
+\begin{tabular}{@{ }c@{ }@{ }c | c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{ }}
+C & D & ( & C & $\land$ & D & )\\
+\hline 
+$\top$ & $\top$ &  & $\top$ & \textcolor{red}{$\top$} & $\top$ & \\
+$\top$ & $\bot$ &  & $\top$ & \textcolor{red}{$\bot$} & $\bot$ & \\
+$\bot$ & $\top$ &  & $\bot$ & \textcolor{red}{$\bot$} & $\top$ & \\
+$\bot$ & $\bot$ &  & $\bot$ & \textcolor{red}{$\bot$} & $\bot$ & \\
+\end{tabular}
+
+\textbf{Disjunktion (oder):}
+$E \lor F$ ist wahr, wenn E oder F wahr sind.
+
+%NOTE: requires \usepackage{color}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{ }}
+E & F & ( & E & $\lor$ & F & )\\
+\hline 
+$\top$ & $\top$ &  & $\top$ & \textcolor{red}{$\top$} & $\top$ & \\
+$\top$ & $\bot$ &  & $\top$ & \textcolor{red}{$\top$} & $\bot$ & \\
+$\bot$ & $\top$ &  & $\bot$ & \textcolor{red}{$\top$} & $\top$ & \\
+$\bot$ & $\bot$ &  & $\bot$ & \textcolor{red}{$\bot$} & $\bot$ & \\
+\end{tabular}
+
+\textbf{Äquivalenz (gleich):}
+$B \Leftrightarrow (C \land D)$ B ist äquivalent zu $C \land D$, wenn beide den selben Wahrheitswert haben.
+
+%NOTE: requires \usepackage{color}
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{}@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{ }}
+B & C & D & ( & B & $\Leftrightarrow$ & ( & C & $\land$ & D & ) & )\\
+\hline 
+$\top$ & $\top$ & $\top$ &  & $\top$ & \textcolor{red}{$\top$} &  & $\top$ & $\top$ & $\top$ &  & \\
+$\top$ & $\top$ & $\bot$ &  & $\top$ & \textcolor{red}{$\bot$} &  & $\top$ & $\bot$ & $\bot$ &  & \\
+$\top$ & $\bot$ & $\top$ &  & $\top$ & \textcolor{red}{$\bot$} &  & $\bot$ & $\bot$ & $\top$ &  & \\
+$\top$ & $\bot$ & $\bot$ &  & $\top$ & \textcolor{red}{$\bot$} &  & $\bot$ & $\bot$ & $\bot$ &  & \\
+$\bot$ & $\top$ & $\top$ &  & $\bot$ & \textcolor{red}{$\bot$} &  & $\top$ & $\top$ & $\top$ &  & \\
+$\bot$ & $\top$ & $\bot$ &  & $\bot$ & \textcolor{red}{$\top$} &  & $\top$ & $\bot$ & $\bot$ &  & \\
+$\bot$ & $\bot$ & $\top$ &  & $\bot$ & \textcolor{red}{$\top$} &  & $\bot$ & $\bot$ & $\top$ &  & \\
+$\bot$ & $\bot$ & $\bot$ &  & $\bot$ & \textcolor{red}{$\top$} &  & $\bot$ & $\bot$ & $\bot$ &  & \\
+\end{tabular}
+
+\textbf{Implikation (folgt):}
+$E \Rightarrow F$ aus der Wahrheit von E können wir Rückschlüsse auf die von F ziehen.
+
+%NOTE: requires \usepackage{color}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{ }}
+E & F & ( & E & $\Rightarrow$ & F & )\\
+\hline 
+$\top$ & $\top$ &  & $\top$ & \textcolor{red}{$\top$} & $\top$ & \\
+$\top$ & $\bot$ &  & $\top$ & \textcolor{red}{$\bot$} & $\bot$ & \\
+$\bot$ & $\top$ &  & $\bot$ & \textcolor{red}{$\top$} & $\top$ & \\
+$\bot$ & $\bot$ &  & $\bot$ & \textcolor{red}{$\top$} & $\bot$ & \\
+\end{tabular}
+
+Wir zeigen: $E \Rightarrow F$ und $\neg E \lor F$ sind äquivalent.
+
+Vergleich der Wahrheitstabellen:
+
+%NOTE: requires \usepackage{color}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{}@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{ }}
+E & F & ( & ( & E & $\Rightarrow$ & F & ) & $\Leftrightarrow$ & ( & $\neg$ & E & $\lor$ & F & ) & )\\
+\hline 
+$\top$ & $\top$ &  &  & $\top$ & $\top$ & $\top$ &  & \textcolor{red}{$\top$} &  & $\bot$ & $\top$ & $\top$ & $\top$ &  & \\
+$\top$ & $\bot$ &  &  & $\top$ & $\bot$ & $\bot$ &  & \textcolor{red}{$\top$} &  & $\bot$ & $\top$ & $\bot$ & $\bot$ &  & \\
+$\bot$ & $\top$ &  &  & $\bot$ & $\top$ & $\top$ &  & \textcolor{red}{$\top$} &  & $\top$ & $\bot$ & $\top$ & $\top$ &  & \\
+$\bot$ & $\bot$ &  &  & $\bot$ & $\top$ & $\bot$ &  & \textcolor{red}{$\top$} &  & $\top$ & $\bot$ & $\top$ & $\bot$ &  & \\
+\end{tabular}
+
+Warum wird in $E \Rightarrow F$ der Wahrheitswert $\top$ zugeordnet, wenn E falsch ist.
+
+\textbf{Beispiel:}
+
+$x^2-2x=-1$
+
+$x^2-2x+1=0$
+
+$x^2-2x=-1 \Rightarrow x^2-2x+1=0$
+
+$1=0 \Rightarrow 1+1=0+1$
+
+$1=0$ ist falsch, aber der Schluss ist richtig (auf beiden Seiten 1 addieren, ändert nichts)
+
+\textbf{Kontraposition:}
+Es gilt: $X \Rightarrow Y$ und $\neg Y \Rightarrow \neg X$ sind äquivalent.
+
+%NOTE: requires \usepackage{color}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{}@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{}c@{ }}
+X & Y & ( & ( & X & $\Rightarrow$ & Y & ) & $\Leftrightarrow$ & ( & $\neg$ & Y & $\Rightarrow$ & $\neg$ & X & ) & )\\
+\hline 
+$\top$ & $\top$ &  &  & $\top$ & $\top$ & $\top$ &  & \textcolor{red}{$\top$} &  & $\bot$ & $\top$ & $\top$ & $\bot$ & $\top$ &  & \\
+$\top$ & $\bot$ &  &  & $\top$ & $\bot$ & $\bot$ &  & \textcolor{red}{$\top$} &  & $\top$ & $\bot$ & $\bot$ & $\bot$ & $\top$ &  & \\
+$\bot$ & $\top$ &  &  & $\bot$ & $\top$ & $\top$ &  & \textcolor{red}{$\top$} &  & $\bot$ & $\top$ & $\top$ & $\top$ & $\bot$ &  & \\
+$\bot$ & $\bot$ &  &  & $\bot$ & $\top$ & $\bot$ &  & \textcolor{red}{$\top$} &  & $\top$ & $\bot$ & $\top$ & $\top$ & $\bot$ &  & \\
+\end{tabular}
+
+% subsubsection aussagenlogik (end)
+
+% subsection grundlagen (end)
+
+% section vorlesung_21_10_2015 (end)
+
+\newpage
+\section{Vorlesung 23.10.2015} % (fold)
+\label{sec:vorlesung_23_10_2015}
+
+\subsection{Aussageformen} % (fold)
+\label{sub:aussageformen}
+
+Eine Aussageform ist eine Äußerung, die eine oder mehrere Variablen enthält und zu einer AUssage wird, wenn man Werte für die Variablen einsetzt.
+
+\textbf{Beispiel: } $ a > b$ for $a = 42$ und $b = 3$ ist eine wahre Aussage.
+
+\subsubsection{Quantoren} % (fold)
+\label{ssub:quantoren}
+
+Quantoren treffen eine Aussage über alle möglichen Werte.
+
+$\forall:$ Diese Aussage ist wahr, wenn sie für alle Werte gilt.
+
+$\exists:$ Diese Aussage ist wahr, wenn sie für mindestens einen Wert gilt.
+
+$\exists!:$ Diese Aussage ist wahr, wenn sie für genau einen Wert gilt.
+
+$\not\exists:$ Diese Aussage ist wahr, wenn sie für keinen Wert gilt.
+
+% subsubsection quantoren (end)
+
+\subsubsection{Zahlen} % (fold)
+\label{ssub:zahlen}
+
+Kurzschreibsymbole für häufig verwendete Zahlenmengen.
+
+$\mathbb{N}:$ Die natürlichen zahlen inklusive der Null. $\{0,1,2,3...\}$
+
+$\mathbb{Z}:$ Die ganzen Zahlen, positiv und negativ. $\{...,-2,-1,0,1,2,...\}$
+
+$\mathbb{Q}:$ Die rationalen Zahlen, Brüche aus $frac{\mathbb{Z}}{\mathbb{Z}}$
+
+$\mathbb{R}:$ Die reellen Zahlen, beliebige Kommazahlen $\{\pi,3.45,1,-4.5656...,...\}$
+
+% subsubsection zahlen (end)
+
+% subsection aussageformen (end)
+
+\subsection{Mengen} % (fold)
+\label{sub:mengen}
+
+\subsubsection{Charakterisierung von Cantor} % (fold)
+\label{ssub:charakterisierung_von_cantor}
+
+Eine Menge ist eine Zusammenfassung von bestimmten wohlunterschiedenen Objekten unserer Anschauung oder unseres Denkens zu einem Ganzen. Die in einer Menge zusammengefassten Objekte heißen Elemente.
+
+% subsubsection charakterisierung_von_cantor (end)
+
+\subsubsection{Notation} % (fold)
+\label{ssub:notation}
+
+Eine Auflistung von Elementen zu einer Menge wird in geschweiften Klammern getan, Reihenfolge und Mehrfachnennung spielen dabei keine Rolle. $\{1,2,3\}$
+
+Man kann auch eine Eigenschaft voranschreiben: $\{x | x \in \mathbb{N} < 6\} = \{0,1,2,3,4,5\}$
+
+Sei M eine Menge, $x \in M $ heißt, dass x ein Element von M ist. $x \notin M$ heißt, dass x kein Element von M ist.
+
+Seien M und N Mengen: $M \subset N$ bedeutet $(c \in M \Rightarrow x \in N)$ wir sagen M ist eine Teilmenge von N. $M \subsetneq N$ bedeutet $M \subset N \land M \neq N$ wir sagen M ist eine echte Teilmenge von N.
+
+Seien M, N und P Mengen:
+
+$M \cap N$ definiert als $\{x | x \in M \land x \in N\}$ ist der Schnitt, wir sagen M geschnitten N.
+
+$M \cup N$ definiert als $\{x | x \in M \lor x \in N$ ist die Vereinigung, wir sagen M vereinigt mit N.
+
+$M \setminus N$ definiert als $\{x | x \in M \land x \notin N\} $ wir sagen M ohne N. 
+
+M und N heißen disjunkt, wenn gilt $M \cap N = \emptyset$
+
+$P = M \mathbin{\dot{\cup}} N$ ist die disjunkte Vereinigung $P = M \cup N$ mit M und N disjunkt.
+
+$M \times N$ definiert als $\{(x,y) | x \in M \land y \in N\}$ ist das kartesische Produkt von M und N. Das Tupel $(x,y)$ ist ein geordnetes Paar, auch im Fall $M=N$. 
+
+Es gilt weiterhin $(x,y)=(x',y') \Leftrightarrow x=x' \land y=y'$
+
+Für den Fall von $M = N$ schreibt man auch $M^2 = M \times M$.
+
+\textbf{Beispiel:} $M=\{1,2\}, N=\{0,2\}$
+
+$M \times N = \{\{1,0\},\{1,2\},\{2,0\},\{2,2\}\}$
+
+\textbf{Bemerkung:} Um zu zeigen, dass zwei Mengen M und N gleich sind, zeigt man $M \subset N$ und $N \subset M$.
+
+% subsubsection notation (end)
+
+% subsection mengen (end)
+
+\subsection{Beweisprinzipien} % (fold)
+\label{sub:beweisprinzipien}
+
+\subsubsection{Widerspruchsbeweis} % (fold)
+\label{ssub:widerspruchsbeweis}
+
+In einem Widerspruchsbeweis führt man die Annahme des Gegenteils zum Widerspruch.
+
+\textbf{Definition:} Eine Primzahl ist eine natürliche Zahl $p \in \mathbb{N}: p > 1$, welche nur durch 1 und p ohne Rest teilbar ist.
+
+\textbf{Satz von Euklid:} Es gibt unendlich viele Primzahlen.
+
+\textbf{Beweis:} Angenommen, es gäbe nur endlich viele Primzahlen $p_1$ bis $p_n$. $q$ definiert als $p_1+...+p_n+1$. Nun ist q durch kein p teilbar, da immer der Rest 1 bleibt. Also ist q selbst oder ein Primteiler von q eine Primzahl, die in der Liste $p_1+...+p_n$ nicht vorkommt.
+
+% subsubsection widerspruchsbeweis (end)
+
+\subsubsection{Vollständige Induktion} % (fold)
+\label{ssub:vollst_ndige_induktion}
+
+In der vollständigen Induktion zeigt man von einem wahren Start und einem wahren Schritt, dass die Behauptung für alle Elemente von Start in Richtung Schritt gilt.
+
+Sei $A(n)$ eine Aussageform mit zulässigen Werten $n \in \mathbb{N}$. Ist die Aussageform $A(0)$ wahr und $A(n) \Rightarrow A(n+1)$, so ist $A(n)$ wahr für alle $n \in \mathbb{N}$.
+
+$A(0)$ ist der \underline{Induktionsanfang}.
+
+$A(n)$ ist die \underline{Induktionsannahme}.
+
+$A(n) \Rightarrow A(n+1)$ ist der \underline{Induktionsschritt}
+
+\textbf{Beispiel:} Die Zahl $n^3-n$ ist für alle $n \in \mathbb{N}$ durch 6 ohne Rest teilbar.
+
+\textbf{Beweis:} $A(n): \exists k \in N: n^3-n=6k$
+
+Induktionsannahme $n = 0$: $0^3-0=6*0$ ist mit $k=0$ wahr.
+
+Induktionsannahme: $\exists k \in N: n^3-n = 6k$
+
+Induktionsschritt $n \Rightarrow n+1$:  
+
+Entweder n oder n+1 ist eine gerade Zahl, daher ist das Produkt $n(n+1)$ gerade.
+
+Daher gilt $\exists l \in \mathbb{N}: n(n+1)=2 \cdot l \cdot k$
+
+Damit gilt $(n+1)^3-(n-1) = (n^3 + 3n^2 + 3n +1) - (n + 1) = (n^3 -n) + 3(n^2+n)=n^3-n+3(n+1)\cdot n = (Mit\ Induktionsannahme) 6k+3(n+1)\cdot n = 6k + 3 \cdot 2 \cdot l = 6(k+l)$
+
+Womit $A(n+1)$ wahr ist.
+
+\textbf{Variander der vollständigen Induktion}
+\begin{itemize}
+    \item Statt bei 0 kann man auch bei einem beliebigen $n_0$ starten und zeigen, dass $A(n) $ für alle $n \geq n_0$ wahr ist.
+    \item Man kann den Induktionsschritt in die andere Richtung führen.
+    \item Man kann die Induktion für endlich viele $n \in N$ zeigen.
+    \item Man kann den Induktionsschritt größer machen und so zum Beispiel für alle gerade zahlen zeigen, dass $A(n)$ gilt. 
+\end{itemize}
+
+% subsubsection vollst_ndige_induktion (end)
+
+% subsection beweisprinzipien (end)
+
+\subsection{Abbildungen} % (fold)
+\label{sub:abbildungen}
+
+\textbf{Definition:} Seien M und N Mengen. Eine Abbildung oder Funktion f von M nach N ist eine \underline{eindeutige Zuordnung}, die \underline{jedem Element} $x \in M$ \underline{genau ein Element} $f(x) \in N$ zuweist. \underline{M heißt Definitionsbereich}, \underline{N heißt Zielbereich oder Wertebereich.}
+
+\textbf{Notation} $f: M \rightarrow N$
+
+Dabei ist es egal, wie die Zuordnung angegeben wird.
+
+Sei M eine Menge: $id_M$ ist definiert als $ M \rightarrow M: x \mapsto x$ die Identität von M.
+
+\textbf{Beispiele für Funktionen:}
+\begin{itemize}
+    \item $f_1: \mathbb{R} \rightarrow \mathbb{R}: x \mapsto x-1$
+    \item $f_2: \mathbb{R} \rightarrow \mathbb{R}: x \mapsto x^2$
+    \item $f_3: \mathbb{R}_{>0} \rightarrow \mathbb{R}: x \mapsto x^2$
+\end{itemize}
+
+Dabei gilt $f_2 \neq f_3$
+
+\textbf{Beispiele, die keine Funktionen sind:}
+\begin{itemize}
+    \item $f_4: \mathbb{R} \rightarrow \mathbb{R}: x \mapsto \frac{1}{x}$
+    \item \begin{equation*}f_5: \mathbb{R} \rightarrow \mathbb{R}: x \mapsto \begin{cases} x+1 &\mbox{if } x \leq 0 \\ 
+                  x & \mbox{if } x \geq 0 \end{cases}\end{equation*}
+\end{itemize}
+
+
+
+% subsection abbildungen (end)
+
+% section vorlesung_23_10_2015 (end)
+
+\newpage
+\section{Vorlesung 28.10.2015} % (fold)
+\label{sec:vorlesung_28_10_2015}
+
+$Graph(f) = \{(x,f(x)) | x \in M\} \subset M \times N$ für $f: M \rightarrow N$
+
+\textbf{Bemerkung:} Ist $\Gamma \subset M \times N$ so dass $\forall x \in M: \exists! y \in N: (x,y) \in \Gamma $, dann $\exists f: M \rightarrow N : \Gamma = Graph(f)$
+
+\textbf{Definition:} Sei $f: M \rightarrow N$ eine Abbildung. $f$ heißt \underline{injektiv} genau wenn $\forall x,x' \in M: f(x) = f(x') \Rightarrow x = x'$ was genau heißt: Es gibt keine zwei verschiedenen Elemente in M, die dasselbe Bild in N haben, oder jedes y hat höchstens ein urbild.
+
+\textbf{Definition:} $f$ heißt \underline{surjektiv}, genau wenn $\forall y \in N: \exists x \in M: f(x) = y$ was genau heißt $Im(f) = N $ und auch heißt jedes $y \in N $ hat mindestens ein Urbild
+
+\textbf{Definition:} f heißt \underline{bijektiv} genau wenn f ist injektiv und surjektiv was heißt jedes $y \in N$ hat genau ein Urbild.
+
+% Beispiele für inj sur un bij
+
+\textbf{Beispiel:} $f_2: \mathbb{R} \rightarrow \mathbb{R}: x \mapsto x^2$ ist nicht surjektiv und nicht injektiv
+
+Verändern wir $f_2: \mathbb{R}_{\geq0} \rightarrow \mathbb{R}_{\geq0}$ ist nun injektiv aber nicht surjektiv
+
+$id_M : M \rightarrow M : x \mapsto x$ ist bijektiv
+
+Ist $f: M \rightarrow N$ injektiv, do ist die Abbildung $M \rightarrow Im(f): x \mapsto f(x)$ bijektiv.
+
+\textbf{Definition} Seien $f: M \rightarrow N, g: N \rightarrow P$ Abbildungen:
+
+$g \circ f : M \rightarrow P: x \mapsto g(f(x))$ heißt die \underline{Komposition} oder \underline{Verkettung} von $f$ und $g$.
+
+$M \xrightarrow{f} N \xrightarrow{g} P$
+
+\textbf{Bemerkung:} Reihenfolge ist wichtig (verschiedene Definitions und Zielbereiche). Selbst, wenn Definitions und Zielbereich übereinstimmen.
+
+$f: \mathbb{R} \rightarrow \mathbb{R} : x \mapsto x^2, g: \mathbb{R} \rightarrow \mathbb{R}: x \mapsto x+1$
+
+$g \circ f: \mathbb{R} \rightarrow \mathbb{R}: x \mapsto x^2 \mapsto x^2+1$
+
+$f \circ g: \mathbb{R} \rightarrow \mathbb{R}: c \mapsto x+1 \mapsto (x+1)^2$
+
+Da $g \circ f(1)=2 \neq 4 = f \circ g(1)$ ist $g \circ f \geq f \circ g$
+
+\textbf{Lemma:} Assoziativität der Komposition 
+
+Seien $f: M \rightarrow N, g: N \rightarrow P, h: P \rightarrow Q$ Abbildungen. Dann gilt $(h \circ g) \circ f = h \circ (g \circ f)$. Wir schreiben deshalb auch $h \circ g \circ f$.
+
+\textbf{Beweis:} 
+
+Der Definitionsbereich von $(h \circ g) \circ f$ ist M.
+
+Der Definitionsbereich von $h \circ (g \circ f)$ ist M.
+
+
+Der Zielbereich von $(h \circ g) \circ f$ ist Q.
+
+Der Zielbereich von $h \circ (g \circ f)$ ist Q.
+
+
+Also stimmen Definitionsbereich und Zielbereich beider Funktionen überein.
+
+Wir müssen noch die Abbildungsvorschriften überprüfen: Dazu sei $x \in M$ beliebig. Dann gilt $(h \circ g) \circ f) (x) = (h \circ g) \circ  f(x) = h(g(f(x))) = h(g \circ f(x)) = (h \circ (g \circ f)) (x)$. 
+
+\textbf{Satz:} Sei $f: M \rightarrow N$ eine Abbildung.
+
+\begin{enumerate}[label=\alph*)]
+    \item $f$ ist genau dann bijektiv, wenn eine Abbildung $g: N \rightarrow M$ existiert mit $g \circ f = id_M$ und $f \circ g = id_N$
+    \item Die Abbildung g ist dann eindeutig bestimmt und bijektiv. Sie heißt Inverse oder Umkehrabbildung von $f$ und wird mit $f^{-1} bezeichnet$.  
+\end{enumerate}
+
+\textbf{Beweis:}
+\begin{enumerate}[label=\alph*)]
+    \item \begin{itemize}
+        \item [$\Leftarrow:$]
+
+        Wir zeigen zunächst, dass $f$ surjektiv ist. Sei dazu $y \in N$. Setze $x := g(y) \in M$. Dann gilt $f(x) = f(g(y)) = (f \circ g) (y) = id_N (y) = y$.
+
+        Wir zeigen: f ist injektiv. Seien dazu $x, x' \in M$ mit $f(x) = f(x')$. Dann gilt $x = id_m (x) = g \circ f (x) = g(f(x)) = g(f(x')) = g \circ f (x') = id_M (x') = x'$
+
+        \item [$\Rightarrow:$]
+
+        Da f bijektiv ist, existiert für jedes $y \in N$ genau ein urbilg $x_y \in M$ con y unter f, i.e. $f(x_y)=y$. Wir definieren: $g:N \rightarrow M: y \mapsto x_y$
+
+        Dann gilt für $y \in N f \circ g y) = f(g(y)) = f(x_y) = y = id_N(y) $. Da $ f \circ g: N \rightarrow N, id_N: N \rightarrow N,$ forlgt $f \circ g = id_N$
+
+        Sei $x \in M$ und $y := f(x) \in N$, dann ist $f(x_y) = y = f(x) \xrightarrow{f injektiv} x = x_y$
+
+        Also ist für $x \in M g \circ f (x) = g(f(x)) = g(y) = x_y = x = id_M (x)$
+
+        Da $g \circ f: M \rightarrow M, id_M: M \rightarrow M$, folgt $g \circ f = id_M$
+    \end{itemize}
+    \item Sei $h: N \rightarrow M$ eine Abbildung mit $h \circ f = id_M, f \circ h = id_N$.
+
+    Zu zeigen ist $g = h$
+
+    Für $y \in N$ gilt $f(g(y)) = (f \circ g) (y) = id_N (y) = y = f \circ h (y) = f(h(y))$
+
+    Da f injektiv ist, folgt $g(y) = h(y)$.
+
+    Damit ist die Eindeutigkeit von g gezeigt.
+
+\end{enumerate}
+
+g erfüllt die Vorraussetzungen in a) und ist daher bijektiv [a) $\Leftarrow$]
+
+\textbf{Beispiel:} 
+
+$f: \mathbb{R} \rightarrow \mathbb{R}: x \mapsto 2x +1$ ist bijektiv mit 
+
+$f^{-1}: \mathbb{R} \rightarrow \mathbb{R}: y \mapsto \frac{1}{2}y-\frac{1}{2}$ denn
+
+$(f \circ f^{-1}) (y) = 2( \frac{1}{2}y -\frac{1}{2}) + 1 = y = id_\mathbb{R}(y)$
+
+$(f^{-1} \circ f) (x) = \frac{1}{2}(2x+1)-\frac{1}{2} = x = id_\mathbb{R} (x)$
+
+\textbf{Achtung:} Die Notation $f^{-1}$ kann verwirren, denn Urbilder werden auch so bezeichnet. für bijektive Abbildung f ist $f^{-1}(y)=x$ (Umkehrabbildung) und $f^{-1}(\{y\})=\{x\}$ (Urbild).
+
+\newpage
+
+\subsection{Mächtigkeit von Mengen} % (fold)
+\label{sub:m_chtigkeit_von_mengen}
+
+\textbf{Definition:} Zwei Mengen $M$ und $N$ heißen \underline{gleich mächtig}, wenn es eine bijektive Abbildung $f: M \rightarrow N$ gibt.
+
+\textbf{Lemma:} Seien $M$ und $N$ endliche Mengen. Dann gilt: $M$ und $N$ sind gleich mächtig genau dann, wenn sie gleich viele Elemente besitzen.
+
+\textbf{Beweis:} 
+\begin{itemize}
+    \item [$\Rightarrow:$] Es existier $f: M \rightarrow N$ bijektiv. M ist endlich, schreibe $M = \{x_1,...,x_n\}, n \in \mathbb{N}$. 
+
+    Betrachte de Bilder von $y_i := f(x_i)$
+
+    Da f surjektiv ist, ist $N = \{y_1,...,y_n\}$.
+
+    Da f injektiv ist, ist $y_i \neq y_j$ für $i \neq j$.
+
+    Also hat $N$ wie $M$ $n$ Elemente
+
+    \item [$\Leftarrow:$] Wir numerieren die Elemenre von M und N:
+
+    $M = \{x_1,...,x_n\}$
+
+    $N = \{y_1,...,y_n\}$
+
+    Setze $f: M \rightarrow N: x_i \mapsto y_i$. 
+\end{itemize}
+
+f ist bijektiv.
+
+
+
+% subsection m_chtigkeit_von_mengen (end)
+
+% section vorlesung_28_10_2015 (end)
+
+\newpage
+
+\section{Vorlesung 30.10.2015} % (fold)
+\label{sec:vorlesung_30_10_2015}
+
+\textbf{Definition:} Für endliche Mengen nennen wir $|M|$ oder $\#M$ die \underline{Mächtigkeit} von M definiert als die Zahl der Elemente in M.
+
+Wir nennen eine Menge \underline{abzählbar unendlich}, wenn sie gleich mächtig zu $\mathbb{N}$ ist, es also eine Bijektion zu $\mathbb{N}$ gibt.
+
+Eine Menge heißt \underline{überabzählbar}, wenn sie weder endlich, noch abzählbar ist.
+
+\textbf{Beispiel:} $\mathbb{Z}$ ist abzählbar unendlich. Hier ist eine bijektive Abbildung $\mathbb{N} \rightarrow \mathbb{Z}$:
+
+\begin{equation*}
+f: x \mapsto \begin{cases} 0 &\mbox{if } n = 0 \\ 
+                           \frac{n+1}{2} & \mbox{if } n ungerade\\
+                           -\frac{n}{2} & \mbox{if } n gerade \end{cases}
+\end{equation*}
+
+\textbf{Proposition:} \underline{Cantorsches Diagonalverfahren}
+
+$\mathbb{Q}$ ist abzählbar unendlich.
+
+\textbf{Beweis:} Wir listen die rationalen Zahlen auf:
+\begin{equation*}
+\begin{pmatrix}
+    1 & \frac{1}{2} & \cdots & \frac{1}{n} \\
+    -1 & \frac{-1}{2} & \cdots & \frac{-1}{n} \\
+    2 & \frac{2}{2} & \cdots & \frac{2}{n} \\
+    \vdots  & \vdots  & \ddots & \vdots  \\
+    m & \frac{m}{2} & \cdots & \frac{m}{n} 
+\end{pmatrix}
+\end{equation*}
+
+Und laufen an Hand der Diagonale durch die Matrik und sammeln jede Zahl einmal auf.
+
+\textbf{Proposition:} Die Menge $\mathbb{R}$ der reellen zahlen ist überabzählbar.
+
+\textbf{Beweis:} $\mathbb{R}$ ist nicht endlich. Wäre $\mathbb{R}$ abzählbar unendlich, so gäbe es eine bijektive Abbildung $\varphi: \mathbb{N} \rightarrow \mathbb{R}$.
+
+Wir schreiben $\varphi(i)$ in Dezimaldarstellung $\forall i \in \mathbb{N}$:
+
+$\varphi(0) = a_{0-p_0}\ a_{0-p_0+1} \cdots a_{00}\ a_{01} \cdots$
+
+$\varphi(1) = a_{1-p_0}\ a_{1-p_0+1} \cdots a_{10}\ a_{11} \cdots$
+
+Setze $a:= a_{00}\ a_{11}\ a_{22}\ \cdots$
+
+Nun ändern wir jede Ziffer von a ab (Zum Beispiel $b_{ii}=1$ falls $a_{ii}=0$ $b_{ii}=0$ sonst) und erhalten $b:= b_{00}\ b_{11}\ b_{22}\ \cdots \in \mathbb{R}$ mit $a_{ii} \neq b_{ii} \forall i \in \mathbb{N}$
+
+Da $\varphi$ bijektiv ist existiert ein $i \in \mathbb{N}$ mit $\varphi(i) = b$, also ist $a_{ii}=b_{ii}$, was ein Widerspruch ist.
+
+\newpage
+
+\textbf{Satz:} Sei $f: M \rightarrow N$ eine Abbildung zwischen endlichen Mengen mit $|M|=|N|$.
+
+Dann sind folgende Aussagen äquivalent:
+
+\begin{itemize}
+    \item f ist injektiv
+    \item f ist surjektiv
+    \item f ist bijektiv
+\end{itemize}
+ 
+\textbf{Beweis:} $2 \Rightarrow 3$
+
+Sei f surjektiv. 
+
+Dann ist $|N|=\displaystyle\sum_{b \in N} |\{b\}| \leq \displaystyle\sum_{b \in N} |f^{-1}(b)| = |M|$
+
+Da $|M| = |N|$ folgt $|\{b\}| = |f^{-1}(b)|=1 $ für alle b in N
+
+Somit folgt: f ist bijektiv
+
+$1 \Rightarrow 3$:
+
+f ist injektiv.
+
+Dann ist $|N| = \displaystyle\sum_{b \in N} |\{b\}| \geq \displaystyle\sum_{b \in N} |f^{-1}(b)| = |M|$
+
+Wegen $|N| = |M|$ wieder $|\{b\}| = |f^{-1}(b)| = 1$ für alle b in N
+
+Somit folgt: f ist bijektiv
+
+Die Umkerung folgt per Definition.
+
+\textbf{Korollar:} M,N endlich:
+
+$f: M \rightarrow N$ injektiv $\Rightarrow |M| \leq |N|$
+
+$f: M \rightarrow N$ surjektiv $\Rightarrow |M| \geq |N|$
+
+folgt unmittelbar aus dem vorhergehenden Beweis.
+
+\textbf{Korollar:} \underline{Schubfachprinzip}
+
+Seien M,N endliche Mengen:
+
+Sei $f: M \rightarrow N, |M| > |N|$, dann ist f nicht injektiv.
+
+\textbf{Intuition:} N ist eine Menge von Schubladen. Packen wir in jede Schublade ein Element von M, dann bleibt mindestens eins übrig, was in eine Schublade muss. Damit hat eine Schublade zwei Elemente.
+
+\textbf{Proposition:} Unter beliebigen $n^2+1$ Punkten $P_1,\cdots,P_{n^2+1}$ in einem Quadrat der Kantenlänge n gibt es zwei Punkte mit Abstand $\leq \sqrt{2}$
+
+\textbf{Beweis:}
+
+Zerlege das Quadrat in $n^2$ Quadrate $Q_i$ der Kantenlänge 1.
+
+Wir definieren $f: \{P_1,\cdots,P_{n^2+1}\} \rightarrow \{Q_i\}$ mit $f(P_j) = Q_i$ falls $P_j \in Q_i$.
+
+Per Schubfachprinzip existiert ein Quadrat, was zwei Punkte enthält. Diese beiden Punkte haben Abstand kleine $\sqrt{2}$
+
+\newpage
+
+\textbf{Definition:}
+
+Sei M eine Menge. Die Menge $\mathcal{P}(M) := \{A | A \subset M\}$ aller Teilmengen von M heißt die \underline{Potenzmenge} von M.
+
+\textbf{Beispiel:} 
+
+$\mathcal{P}(\emptyset) = \{\emptyset\}$
+
+$\mathcal{P}(\{1,3\}) = \{\emptyset,\{1\},\{2,\},\{1,2\}\},$
+
+\textbf{Satz:} $\mathcal{P}(M)$ ist nicht gleichmäßig zu M
+
+\textbf{Beweis:}
+
+Sei $M = \emptyset$, dann ist $|M|=0$, aber $|\mathcal{P}(M)|=1$, $1\neq 0$
+
+Sei $M \neq \emptyset$. Angenommen, es gäbe $f: M \rightarrow \mathcal{P}(M)$ bijektiv
+
+$\forall x \in M$ ist $f(x) \in \mathcal{P}(M)$ also $f(x) \subset M$
+
+Betrachte $U = \{x \in M | x \notin f(x)\}, U \subset M$ also $U \in \mathcal{P}(M)$
+
+f ist surjektiv, also existiert ein $u \in M: U = f(u)$
+
+Angenommen $u \notin U = f(u) \Rightarrow u \in U$
+
+Angenommen $u \in U = f(u) \Rightarrow u \notin U$
+
+Das ist ein Widerspruch.
+
+\subsection{Relationen} % (fold)
+\label{sub:relationen}
+
+\textbf{Definition:} Seien M,N Mengen, jede Teilmenge $R \subset M \times N$ heißt \underline{Relation} zwischen M und N.
+
+Ist R eine Relation zwischen M und N, $x \in M, y \in N$, dann sagen wir x steht in Relation zu y bezüglich R, wenn gilt, dass $(x,y) \in R$.
+
+\textbf{Beispiel:} Der Graph einer Funktion ist eine Relation, bei der jedes $x \in M$ zu genau einem $y \in N$ in Relation steht.
+
+$M = N = \mathbb{R}, R = \{(x,y) \in \mathbb{R}^2 | x \leq y\}$ ist eine Relation.
+
+\textbf{Definiton:} Sei M eine Menge. Eine \underline{Ordnungsrelation} (Halbordnung/partielle Ordnung) auf M ist eine Relation $R \subset M \times M$ so dass $\forall x,y,z \in M:$
+
+\begin{itemize}
+     \item $(x,x) \in R$ \underline{Reflexivität}
+     \item $(x,y) \in R, (y,x \in R \Rightarrow x=y$ \underline{Antisymmetrie}
+     \item $(x,y) \in R, (y,z) in R \Rightarrow (x,z) \in R$ \underline{Transitivität}
+ \end{itemize} 
+
+ \textbf{Beispiel:} $M = \mathbb{R}, R = \{(x,y) | x \leq y\}$ ist Ordnungsrelation
+
+ \textbf{Notation:} Wir schreiben $x \leq y \Leftrightarrow (x,y) \in R$ und sprechen von der Ordnungsrelation R. Wir sprechen auch von der teilgeordneten/partiell geordneten Menge $(M,\leq)$
+
+ \textbf{Beispiel:} Sei M eine Menge, $\mathcal{P}(M)$ ihre Potenzmenge
+
+ Sei $R \subset \mathcal{P}(M) \times \mathcal{P}(M)$ definiert durch $R = \{(A,B) | A \subset B\}$ eine Ordnungsrelation.
+
+% subsection relationen (end)
+
+% section vorlesung_30_10_2015 (end)
+
+\section{Vorlesung 4.11.2015} % (fold)
+\label{sec:vorlesung_4_11_2015}
+
+\textbf{Definiton}
+
+Sei M eine Menge. 
+
+\begin{itemize}
+	\item Eine Ordnungsrelation heißt \underline{Totalordnung}, falls je 2 Elemente vergleichbar sind. Da heißt, dass sie zu einander in einer Relation stehen. Also $\forall x,y \in M : x \leq y \lor y \leq x$
+	\item Ist $\leq$ eine Ordnungsrelation auf M, $A \subset M, x \in A$, so heißt x minimal (beziehungsweise maximal) in A, falls gilt 
+	$\forall y \in A$ gilt, mit $y \leq x$ (beziehungsweise $x \leq y$) folgt $y = x$.
+	\item Eine Totalordnung heißt \underline{Wohlordnung}, falls jede nicht-leere Teilmenge von M ein minimales Element besitzt. 
+	Das minimale beziehungsweise maximale Element ist eindeutig, sofern es existiert. Wir bezeichnen es as $Min(A)$ oder $Max(A)$.
+\end{itemize}
+
+\textbf{Beispiel:}
+\begin{itemize}
+	\item $(\mathbb{R}, \leq )$ ist totalgeordnet, aber nicht wohlgeordnet
+	\item $(\mathbb{Z}, \leq )$ ist totalgeordnet, aber nicht wohlgeordnet
+	\item $(\mathbb{N}, \leq )$ ist wohlgeordnet
+	\item $\mathbb{Z}$ mit der Anordnung $0 < -1 < 1 < -2 < 2 \cdots$ ist wohlgeordnet
+\end{itemize}
+
+\textbf{Definition:}
+
+Sei M eine Menge. Eine \underline{Äquivalenzrelation} auf M ist eine Relation, so dass $\forall x,y,z \in M$ gelten:
+\begin{itemize}
+	\item Reflexivität $(x,x) \in R$ oder $x \sim x$
+	\item Symmetrie $(x,y) \in R \Rightarrow (y,x) \in R$ oder $x \sim y \Rightarrow y \sim x$
+	\item Transitivität $(x,y),(y,z) \in R \Rightarrow (x,z) \in R$ oder $x \sim y, y \sim z \Rightarrow x \sim z$
+\end{itemize}
+
+\textbf{Notation:}
+
+Sei M eine Menge, R eine Äquivalenzrelation, wir schreiben $x \sim y$ statt $(x,y) \in R$
+
+\textbf{Definition:}
+
+Sei M eine Menge und $\sim$ eine Äquivalenzrelation.
+
+Für $ x \in M$ heißt $[x] := \{y \in M | y \sim x\}$ die Äquivalenzklasse von x. Jedes $y \in [x]$ heißt Vertreter oder Repräsentant der Klasse $[x]$.
+
+\textbf{Notation:}
+
+$M /_\sim := \{[x] | x \in M \}$ bezeichnet die Menge der Äquivalenzklassen.
+
+\textbf{Beispiel:}
+\begin{itemize}
+	\item Sei $M$ beliebige Menge, $=$ ist eine Äquivalenzrelation, jede Äquivalenzklasse besteht aus einem Element.
+	\item $M = \{Studenten\}, x \sim y: \Leftrightarrow x$ und $y$ studieren das selbe Fach
+	\item Rationale Zahlen, $\frac{1}{2}$ und $\frac{2}{4}$ wollen wir nicht unterscheiden.
+	Definiere auf $\mathbb{Z} \times \mathbb{Z}$ eine Äquivalenzrelation $\sim$ durch 
+	$(p,q) \sim (p',q'):\Leftrightarrow p \cdot q' = p' \cdot q$.
+	Die rationalen Zahlen sind die Menge der Äquivalenzklassen dieser Relation.
+\end{itemize}
+
+\textbf{Lemma:}
+
+Sei M eine Menge und $\sim$ eine Äquivalenzrelation auf M. 
+
+Die Äquivalenzklassen bilden eine disjunkte Zerlegung von M, anders gesagt, jedes Element von M liegt in genau einer Äquivalenzklasse. Für zwei Äquivalenzklassen $[x],[y]$ gilt entweder $[x]=[y]$ oder $[x] \cap [y] = \emptyset$.
+
+\textbf{Beweis:}
+
+Sei $x \in M$. Aus $x \sim x$ folgt $x \in [x] \subset \bigcup_{[y] \in M/_\sim}[y] \Rightarrow \bigcup_{[y] \in M/_\sim}[y] = M$.
+
+Seien $[x],[y] \in M/_\sim $ mit $[x]\neq[y] $. Angenommen $[x] \cap [y] \neq \emptyset$, 
+
+dann existiert $z \in [x]\cap[y] \Rightarrow z \sim x, z \sim y \Rightarrow x \sim z, z \sim y \Rightarrow x \sim y$
+
+Sei $u \in [x] \Rightarrow u \sim x$, da auch $x \sim y \Rightarrow u \sim y \Rightarrow u \in [y] \Rightarrow [x] \subset [y]$.
+
+Genauso umgekehrt. Also ist $[x] \subset [y] \land [y] \subset [x] \rightarrow [x] = [y]$ was ein Widerspruch für die Annahme $[x] \neq [y]$ ist.
+
+Also sind $[x]$ und $[y]$ verschiedene Äquivalenzklassen und disjunkt.
+
+\subsection{Rechnen mit Restklassen} % (fold)
+\label{sub:rechnen_mit_restklassen}
+
+\textbf{Definition:}
+
+$b \in \mathbb{Z}$ heißt Teiler von $a \in \mathbb{Z}$, falls $c \in \mathbb{Z}$ existiert mit $b\cdot c = a$. Wir scheiben $b | a$.
+
+\textbf{Satz:} \underline{Division mit Rest in $\mathbb{Z}$}
+
+Sei $a \in \mathbb{Z}$ und $m \in \mathbb{N}$. Dann gibt es eindeutig bestimmte Zahlen $q \in \mathbb{Z}$ und $r \in \{0,1,\cdots,m-1\}$ mit $a=q\cdot m + r$. a heißt Quotient, r heißt Rest von a bei Division durch m.
+
+\textbf{Definition:}
+
+Zwei ganze zahlen $a,b$ heißen \underline{kongruent modulo m} $(m \in \mathbb{N})$ wenn $m | a-b$. Wir schreiben $a \equiv b\mod\ m$.
+
+\textbf{Lemma:} $\equiv \mod m$ ist eine Äquivalenzrelation.
+
+\textbf{Beweis:}
+
+$m | 0$, denn $0 \cdot m = 0 \Rightarrow m | a-a \forall a \in \mathbb{Z} \Rightarrow a \equiv a \mod m \Rightarrow \equiv $ ist reflexiv.
+
+Sei $a \equiv b \mod m \Rightarrow m | a-b \Rightarrow \exists c: m \cdot c = a-b \Rightarrow m \cdot (-c) = b -a \Rightarrow m | b-a \rightarrow b \equiv a \mod m \Rightarrow$ Symmetrie
+
+Sei $a \equiv b, b \equiv c \mod m \Rightarrow m | a-b, m | b-c \Rightarrow \exists c,c': m \cdot c  = a-b, m \cdot c' = b-a \Rightarrow m \cdot (c + c') = a-c \Rightarrow m | a-c \rightarrow a \equiv c \mod m \Rightarrow $ Transitivität
+
+\textbf{Bemerkung:} Man kann Kongruenz mod m auch anders definieren: $a \equiv b \mod m \Leftrightarrow a$ und $b$ haben bei Division durch $m$ den selben Rest. 
+
+Es gilt $a = q_1 m + r_1, b = q_2 m + r_2, q_i \in \mathbb{Z}, r_i \in \{0,\cdots,m-1\}$
+
+Also gilt $a-b = (q_1 - q_2) \cdot m + (r_1 - r_2)$
+
+Also gilt $a \equiv b \mod m \Leftrightarrow r_1 -r_2 = 0 \Leftrightarrow r_1=r_2$
+
+Die Äquivalenzklassen der Relation $\equiv$ nennen wir Restklassen. In jeder Restklase gibt es einen besonderen Vertreter, den Rest $r \in \{0,\cdots,m-1\}$.
+
+$\mathbb{Z}/_{\equiv \mod m} =: \mathbb{Z}/_{m \mathbb{Z}} =: \mathbb{Z}_m = \{[0],[1],\cdots,[m-1]\}$
+
+\textbf{Definition:} Auf $\mathbb{Z}_m$ definieren wir eine Addition und Multiplikation durch $[a] + [b] := [a+b]$ und $[a] \cdot [b] := [a \cdot b]$
+
+\textbf{Achtung:} \underline{Wohldefiniertheit}:
+
+Frage: Für $[a'] = [a]$, ist dann auch $[a'+b] = [a+b]$?
+
+Hängt die Definition vom gewählten Vertreter ab? Nur wenn dies nicht der Fall ist, dann ist das eine wohldefinierte Definition.
+
+\textbf{Beweis:}
+
+Sei $a' \in [a] \Rightarrow a \equiv a' \mod m \Rightarrow a - a' = c \cdot m$ für $c \in \mathbb{Z}$
+
+Also $(a+b) - (a'+b) = c \cdot m \Rightarrow a+b \equiv a'+b \mod m \Rightarrow [a+b] = [a'+b]$
+
+Genauso $ab-a'b = (a-a')b = c \cdot m \cdot b \Rightarrow [ab]=[a'b]$
+
+Folgende Rechenregeln gelten (wie man leicht sieht):
+
+\begin{itemize}
+	\item Kommutativität von +: $[a]+[b]=[b]+[a]$
+	\item Kommutativität von $\cdot$: $[a]\cdot[b]=[b]\cdot[a]$
+	\item Additatives neutrales Element: $[a]+[0]=[a]$
+	\item Mutiplikatives neutrales Element: $[a]\cdot[1]=[a]$
+	\item Additive inverse Elemente: $[a]+[-a]=[0]$
+	\item Assoziativität der Addition: $([a]+[b])+[c]=[a]+([b]+[c])$
+	\item Assoziativität der Multiplikation: $([a]\cdot[b])\cdot[c]=[a]\cdot([b]\cdot[c])$
+	\item Distributivität: $[a] \cdot ([b]+[c])=[a]\cdot[b]+[a]\cdot[c]$
+\end{itemize}
+
+\textbf{Definition:}
+
+Seien $a,b \in \mathbb{Z} \setminus \{0\}$
+
+Wir nennen $c \in \mathbb{N}\setminus \{0\}$ größten gemeinsamen Teiler oder $ggT(a,b) \cdot d$, wenn:
+
+\begin{itemize}
+	\item $d | a$
+	\item $d | b$
+	\item $\forall c \in \mathbb{Z}: c | a, c | b \Rightarrow c | d$
+\end{itemize}
+
+\textbf{Bemerkung:} Es gibt höchstens einen $ggT(a,b)$
+
+Angenommen $d,d'$ erfüllen alle drei Punkte, dann liefert der dritte Punkt angewendet auf d $d | d'$ und umgekehrt $d' | d$
+
+Somit $\exists c,c' : cd=d', c'd'=d \Rightarrow c\cdot c' \cdot d' = d' \Rightarrow c \cdot c' = 1$. Da $d,d' > 0$ folgt $c = c' = 1$ also $d = d'$.
+
+% subsection rechnen_mit_restklassen (end)
+
+% section vorlesung_4_11_2015 (end)
+
+\end{document}
+ 
