@@ -1,3 +1,20 @@
+%%%
+%% Copyright (c) 2015. Marvin Hofmann <marvin@marv-productions.de>
+%%%
+%% This program is free software: you can redistribute it and/or modify it
+%%  under the terms of the GNU General Public License as published by
+%% the Free Software Foundation, either version 3 of the License, or
+%% (at your option) any later version.
+%%%
+%% This program is distributed in the hope that it will be useful,
+%% but WITHOUT ANY WARRANTY; without even the implied warranty of
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+%% GNU General Public License for more details.
+%%%
+%% You should have received a copy of the GNU General Public License
+%% along with this program. If not, see <http://www.gnu.org/licenses/>.
+%%%
+
 % Dokumententyp (Schriftgröße, Papiergröße, Formelausrichtung)
 \documentclass[pdftex,12pt,a4paper,fleqn]{scrartcl}
 
@@ -1005,6 +1022,209 @@ Somit $\exists c,c' : cd=d', c'd'=d \Rightarrow c\cdot c' \cdot d' = d' \Rightar
 % subsection rechnen_mit_restklassen (end)
 
 % section vorlesung_4_11_2015 (end)
+
+\section{Vorlesung 6.11.2015} % (fold)
+\label{sec:vorlesung_6_11_2015}
+
+\textbf{Notation Nachtrag:} \underline{große Vereinigung}
+
+$\bigcup_{[y] \in M/_\sim} [y] = M$
+
+$\bigcup$ ist die Vereinigung vieler Mengen, analog zu zum Beispiel $\sum$ als die Summer vieler Zahlen.
+
+\textbf{Algorithmus} \underline{Euklidischer Algorithmus}
+
+Da der $ggt(a,b) = ggt(-a,b) = ggt(-a,-b)$ können wir ohne Beschränkung der Allgemeinheit annehmen, dass $0 < b < a$.
+
+\begin{itemize}
+	\item[1.] $a_1 := a, b_1 := b$
+	\item[2.] Berechne eine Division mit Rest $a_1 = q_1 \cdot b_1 + r_1$
+	\begin{itemize}
+		\item Wenn $r_1 = 0$ dann ist $ggt(a,b) = b_1$, stop
+		\item Sonst setze $a_2 := b_1, b_2 := r_1$ und starte Schritt erneut.
+	\end{itemize}
+\end{itemize}
+
+\textbf{Beweis:}
+
+\begin{itemize}
+	\item[Terminierung:]
+
+	Der Allgorithmus liefert bei jedem Durchlauf von Schritt 2 eine $r_i$ mit $0\leq r_i = b_{i+1} < b_i$
+
+	In jedem Schritt wird der Divisor also echt kleiner, das endet nach endlich vielen Schritten.
+
+	\item[Korrektheit:]
+
+	Sei N die Anzahl der Durchläufe von Schritt 2. Induktion nach N:
+
+	\begin{itemize}
+		\item[IA:]
+
+		$N = 1$: Dann gilt $a = a_1 = q_1 \cdot b_1 + r_1$ mit $r_1 = 0$, also $q = q_1 \cdot b \Rightarrow b | a \Rightarrow b$ ist gemeinsamer Teiler von $a$ und $b$. 
+
+		Sei c ein weiterer gemeinsamer Teiler, also $c | b, c | a \Rightarrow c | b \Rightarrow b = ggt(a,b)$
+
+		\item[IV:]
+
+		Wir setzen vorraus, dass der Algorithmus, wenn er nch N Schritten stoppt, den $ggt$ der Anfangszahlen liefert.
+
+		\item[IS:]
+
+		$N \rightarrow N+1$: Wir wollen zeigen, dass er auch, wenn er nach $N+1$ Schritten stoppt, den $ggt$ liefert.
+
+		Sein $(a_1,b_1)$ ein Zahlenpaar, für das der Algorithmus nach $N+1$ Schritten stoppt. Dann stoppt der Algorithmus für $(a_2,b_2)$ bereits nach N Schritten.
+
+		Durch Einsetzen der Induktionsvoraussetzung: $b_{N+1}=ggt(a_2,b_2 =: d$
+
+		Der erste Durchlauf liefert $a_1 = q_1 \cdot b_1 + b_2$ und $a_2 = b$.
+
+		Da $d | a_2 = b_1$ und $d | b_2$ folgt $d | a_1 = q_1 \cdot b_1 + b_2$
+
+		Sei $c \in \mathbb{N}$ mit $c | a_1$ und $c | b_1$, dann folgt $c | a_2$. Da $b_2 = a_1 -q_1 \cdot b_1$ gilt $c | b_2$. Da $d = ggt(a_2,b_2)$ folgt $c | d$. 
+
+		Darauf folgt $d = ggt(a_1,b_1)$.
+	\end{itemize}
+\end{itemize}
+
+\textbf{Beispiel:}
+
+\begin{tabular}{c|c|c}
+i&$(a_i,b_i)$&$a_i-q_i\cdot b_i = b_{i+1}$\\
+\hline
+1&$(104,47)$&$104-2\cdot47=10$\\
+2&$(47,10)$&$47-4\cdot10=7$\\
+3&$(10,7)$&$10-1\cdot7=3$\\
+4&$(7,3)$&$7-2\cdot3=1$\\
+5&$(3,1)$&$3-3\cdot\fbox{1}=0$\\
+\end{tabular}
+
+Somit gilt $ggt(104,47)=1$
+
+\textbf{Satz:}
+
+Seien $a,b \in \mathbb{Z} \setminus \{0\}$
+
+$d = ggt(a,b) \Leftrightarrow $ $$\begin{cases}
+	1) & \exists r,s \in \mathbb{Z}$$ mit $$d = r \cdot a + s \cdot b \\
+	2) &$$ \text{Jede ganze Zahle der Form} $$r' \cdot a + s' \cdot b $$ \text{ist durch d teilbar}$$
+	\end{cases}$$
+
+\textbf{Beweis:}
+
+\begin{itemize}
+	\item[$\Rightarrow$] 
+	$$
+	\begin{cases}
+		1) & $$\text{folgt aus dem euklidischen Algorithmus durch Rückwärtseinsetzung}$$\\
+		2) & $$\text{klar, da}$$ d | a, d | b
+	\end{cases}$$
+
+	\item[$\Leftarrow$]
+
+	Sei $d' = r \cdot a + s \cdot b > 0$ eine Zahle, die 1) und 2) erfüllt.
+
+	Sei $d = ggt(a,b)$
+
+	Wegen $\Rightarrow$ existieren $r',s' \in \mathbb{Z}$ mit $d = r' \cdot a + s' \cdot b$ und $d$ erfüllt 2).
+
+	Verwende 2) für 
+	$$
+	\begin{cases}
+		d $$ \text{mit} $$ d' = r \cdot a + s \cdot b \Rightarrow d | d'\\
+		d'$$ \text{mit} $$ d = r' \cdot a + s' \cdot b \Rightarrow d' | d\\
+	\end{cases}
+	\} \Rightarrow d = d'$$
+	
+\end{itemize}
+
+\textbf{Satz:}
+
+Genau dann hat die Gleichung $[a] \cdot [b] = [1]$ für $[0] \neq [a] a \mathbb{Z} m$ eine Lösung $[b] \in \mathbb{Z}$ wenn $ggt(a,m) = 1$
+
+\textbf{Beweis:}
+
+\begin{itemize}
+	\item[$\Rightarrow$]
+
+	Sei $ggt(a,m) = 1 \Rightarrow \exists r,s$ mit $r \cdot a + s \cdot m =1 \Rightarrow r \cdot a -1 = s \cdot m Rar r \cdot a \equiv 1 \mod m$, setze $[b]=[r]$
+
+	\item[$\Leftarrow$]
+
+	$a \cdot b \equiv 1 \mod m \Rightarrow a \cdot b -1 = s \cdot m \Rightarrow a \cdot b + (-s) \cdot m = 1$
+
+	Außerdem teile 1 ganze Zahl der Form $r \cdot a + s \cdot m \Rightarrow 1 = ggt(a,b)$
+\end{itemize}
+
+\textbf{Satz:} 
+
+genau dann existiere in $\mathbb{Z}_m$ für jedes $[a] \neq [0]$ ein multiplikatives Inverses, wenn m eine Primzahl ist.
+
+Korollar aus dem vorhergehenden Satz.
+
+\underline{Anwendungen von Rechnen mit Restklassen}
+\begin{itemize}
+	\item Uhrzeit geben wir in Restklassen mod 12 oder mod 24 an.
+	\item Strichcodes: 13 Ziffern:
+	\begin{itemize}
+		\item $a_1,a_2,a_3$ Land
+		\item $a_4,\cdots,a_7$ Hersteller
+		\item $a_8,\cdot,a_{12}$ Artikel
+		\item $a_{13}$ Prüfziffer
+	\end{itemize}
+	Dabei gilt für die Prüfziffer
+
+	$a_{13} \equiv -(a_1+3 \cdot a_2 + a_3 +3 \cdot a_4 + \cdots + 3 a_{12}) \mod 10$
+
+	Wenn beim Scannen eine Ziffer nicht gelesen werden konnte, so kann sie mit Hilfe der Gleichung aus der Prüfziffer berechnet werden.
+
+	(für $a_1,a_3$ klar, für die anderen verwende $3 \cdot 7 \equiv 1 \mod 10$)
+	\item ISBN Nummer (Beispiel weggelasse)
+	\item Teilbarkeitsregeln (Beispiel weggelassen)
+\end{itemize}
+
+\subsection{Zahlen, Folgen und Reihen} % (fold)
+\label{sub:zahlen_folgen_und_reihen}
+
+\subsubsection{Die reellen zahlen} % (fold)
+\label{ssub:die_reellen_zahlen}
+
+\textbf{Die Körperaxiome:}
+
+Auf $\mathbb{R}$ sind zwei Verknüpfungen erklärt:
+\begin{itemize}
+	\item[$+$:] $\mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R} : (a,b) \mapsto a + b$
+	\item[$\cdot$:] $\mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R} : (a,b) \mapsto a \cdot b$
+\end{itemize}
+
+\textbf{Definition:} Eine Menge K zusammen mit zwei Abbildungen
+\begin{itemize}
+	\item[$+$:] $K\times K\rightarrow K : (a,b) \mapsto a + b$
+	\item[$\cdot$:] $K \times K \rightarrow K : (a,b) \mapsto a \cdot b$
+\end{itemize}
+heißt \underline{Körper}, wenn:
+
+\begin{itemize}
+	\item Assoziativität von +: $(a+a) + c = a + (b+c) \forall a,b,c \in K$
+	\item Kommutativität von +: $a+b = b+a \forall a,b \in K$
+	\item Existenz der 0: $\exists 0 \in K: a+0 = a \forall a \in K$
+	\item Existenz des Negativen: $\forall a \in K: \exists a' \in K: a' + a = 0$
+	\item Distributivität:
+	\begin{itemize}
+		\item $a \cdot (b + c) = a \cdot b + a \cdot c \forall a,b,c \in K$
+		\item $(a + b) \cdot c = a \cdot c + b \cdot c \forall a,b,c \in K$
+	\end{itemize}
+\end{itemize}
+
+\textbf{Beispiel:}
+$\mathbb{Q},\mathbb{R},\mathbb{Z}_p$ mit $p$ Primzahl
+
+
+% subsubsection die_reellen_zahlen (end)
+
+% subsection zahlen_folgen_und_reihen (end)
+
+% section vorlesung_6_11_2015 (end)
 
 \end{document}
  
